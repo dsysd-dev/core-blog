@@ -1,0 +1,10 @@
+health
+mental_health
+coding
+frontend_development
+inspirational
+wealth_management
+finance
+insightful
+upskill
+case_study
