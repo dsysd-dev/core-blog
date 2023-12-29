@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation';
 import { SIDENAV_ITEMS } from '@/constants';
 import { SideNavItem } from '@/types';
 import { Icon } from '@iconify/react';
+import Image from "next/image";
 
 const SideNav = () => {
     return (
@@ -17,8 +18,15 @@ const SideNav = () => {
                     href="/"
                     className="flex flex-row space-x-3 items-center justify-center md:justify-start md:px-6 border-b border-zinc-200 h-12 w-full"
                 >
-                    <span className="h-7 w-7 bg-zinc-300 rounded-lg" />
-                    <span className="font-bold text-xl hidden md:flex">IndieHash</span>
+                    {/* <span className="h-7 w-7 bg-zinc-400 rounded-lg" /> */}
+                    {/* <Icon icon="lucide:home" width="24" height="24" /> */}
+                    <Image
+                        src="/dsysd_logo.png"
+                        alt="Description of your image"
+                        width={40} // specify the width you want
+                        height={40} // specify the height you want
+                    />
+                    <span className="font-bold text-xl hidden md:flex">dsysd.dev</span>
                 </Link>
 
                 <div className="flex flex-col space-y-2  md:px-6 ">
@@ -79,6 +87,7 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
             ) : (
                 <Link
                     href={item.path}
+                    target={whitelisted(item.title) ? '' : '_blank'}
                     className={`flex flex-row space-x-4 items-center p-2 rounded-lg hover:bg-zinc-100 ${item.path === pathname ? 'bg-zinc-100' : ''
                         }`}
                 >
@@ -89,3 +98,10 @@ const MenuItem = ({ item }: { item: SideNavItem }) => {
         </div>
     );
 };
+
+function whitelisted(title: string) {
+    if (title === 'Home' || title === 'Posts') {
+        return true;
+    }
+    return false;
+}

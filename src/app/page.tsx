@@ -1,14 +1,27 @@
-import Link from "next/link";
-import { PostMetadata } from "@/components/PostMetadata";
-import getPostMetadata from "@/components/getPostMetadata";
-import PostPreview from "@/components/PostPreview";
+// pages/index.js
+import React from 'react';
+import styles from './styles.module.css';
+import Image from "next/image";
+import Link from 'next/link';
 
-const HomePage = () => {
-  const postMetadata: PostMetadata[] = getPostMetadata();
-  const postPreviews = postMetadata.map((post) => (
-    <PostPreview key={post.slug} {...post} />
-  ));
-  return <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{postPreviews}</div>;
+const LandingPage = () => {
+  return (
+    <div className={styles.hero}>
+      <div className={styles.heroContent}>
+        <h1 className={styles.heroTitle}>Welcome to dsysd.dev</h1>
+        <Image 
+            src="/dsysd_logo.png" 
+            alt="Hero Image"
+            className={styles.heroImage}
+            width={200}
+            height={200}
+        />
+        <Link href='/posts'>
+            <button className={styles.getStartedButton}>Get Started</button>
+        </Link>
+      </div>
+    </div>
+  );
 };
 
-export default HomePage;
+export default LandingPage;
