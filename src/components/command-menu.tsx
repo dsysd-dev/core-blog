@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
-import { DialogProps } from '@radix-ui/react-alert-dialog';
+import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import {
   CircleIcon,
   FileIcon,
@@ -25,7 +25,7 @@ import {
   CommandSeparator,
 } from '@/components/ui/command';
 
-export function CommandMenu({ ...props }: DialogProps) {
+export function CommandMenu({ ...props }: AlertDialog.AlertDialogProps) {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
   const { setTheme } = useTheme();
